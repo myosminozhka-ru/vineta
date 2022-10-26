@@ -92,12 +92,12 @@ export default {
   },
   mounted() {
     setTimeout(() => {
+      this.sections = document.querySelectorAll('.section')
       if (window.innerWidth <= 1024) {
         this.activeIndex = -1
         this.scollTo()
       }
       if (window.innerWidth > 1024) {
-        this.sections = document.querySelectorAll('.section')
         this.activeIndex = 0
         this.sections.forEach((item) => {
           if (item.querySelector('.section__top--tech') && item.querySelector('.section__middle--tech')) {
