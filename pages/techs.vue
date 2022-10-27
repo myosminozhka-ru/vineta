@@ -121,7 +121,7 @@ export default {
           this.activeIndex = 1
         }
       }
-    }, 500)
+    }, 1000)
   },
   methods: {
     ...mapActions(['addBreadcrumbs']),
