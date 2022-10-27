@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <osm-header />
+        <!-- <osm-header /> -->
         <div class="header_padding">
             <div class="search">
                 <osm-breadcrumbs />
@@ -22,8 +22,41 @@
 import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "FavoritesPage",
+    head() {
+      return {
+        title: 'Результаты поиска',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'Результаты поиска'
+          },
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: 'Результаты поиска'
+          },
+          {
+            hid: 'twitter:card',
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          {
+            hid: 'twitter:title',
+            name: 'twitter:title',
+            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
+          },
+          {
+            hid: 'twitter:description',
+            name: 'twitter:description',
+            content: 'Результаты поиска'
+          },
+        ]
+      }
+    },
     components: {
-        OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProductsSearch.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),
@@ -62,6 +95,10 @@ export default {
 <style lang="scss" scoped>
 .search {
     padding: rem(30) rem(240) rem(120);
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
+    }
     overflow: hidden;
     @media all and (max-width: 1280px) {
         padding: 30px 20px;

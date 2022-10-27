@@ -6,31 +6,28 @@
                     <osm-breadcrumbs />
                 </div>
                 <div class="section__middle--tech">
-                    <osm-h1 class="section__title">Технология производства</osm-h1>
+                    <osm-h1 class="section__title">Технологии производства</osm-h1>
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
                         <img :src="require('~/assets/img/techs/2.jpg')" alt="">
                     </div>
                     <div class="section__right--tech" @mousewheel.stop>
-                        <div class="index">02</div>
+                        <div class="index">01</div>
                         <div class="texts">
-                            <div class="title">Заготовительный этап</div>
+                            <div class="title">Входной контроль</div>
                             <p class="text">
-                                На данном этапе происходит вырезка (вырубка) заготовок для последующей обработки. На предприятии имеется станок плазменной резки MultiCam 3000 Plasma, на котором осуществляется вырезка заготовок из чёрного проката толщиной до 25 мм, алюминия до 16 мм и нержавеющего проката до 12 мм.
+                                Первично осуществляется входной контроль материала и комплектующих, который предусматривает проверку:
                             </p>
-                            <p class="text">
-                                Высокоточная резка деталей сложной конфигурации на высокой скорости
-                            </p>
-                            <div class="bg_text">
-                                Станки гидроабразивной резки MultiCam 4000 Series и Idroline 1720 позволяют производить вырезку заготовок практически любой формы из материалов толщиной от 0,5 и до 110 мм, отрезными площадями 1500х3000 и 2000х1700. Отрезное оборудование для резки проката макс. Ø300 мм.
-                            </div>
-                            <p class="text">
-                                Станки гидроабразивной резки позволяют производить высокоточную резку металла и прочих материалов без появления неровности кромки.
-                            </p>
-                            <div class="bg_text">
-                                Ножницы гильотинные DEKA используются для рубки заготовок макс. толщиной 16 мм и шириной до 2,5 м.
-                            </div>
+                            <ul class="list">
+                                <li>Сопроводительной документации, удостоверяющей качество (сертификата, паспорта)</li>
+                                <li>Маркировки, тары, упаковки:</li>
+                                <li>Геометрических размеров;</li>
+                                <li>Состояния поверхности;</li>
+                                <li>Специальных свойств;</li>
+                                <li>Марки материала (химического состава), механических свойств, структуры;</li>
+                                <li>По заключению отдела технического контроля (ОТК) принимается решение о годности данной партии материала (либо комплектующих).</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -58,6 +55,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
+        @media all and (max-width: 1480px) {
+            padding: rem(30) rem(50) rem(40) rem(107);
+        }
         @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }
@@ -129,6 +129,11 @@ height: 100%;
             @media all and (max-width: 1280px) {
                 top: -65px;
             }
+            @media all and (max-width: 860px) {
+                font-size: 190px;
+top: -50px;
+right: 10px;
+            }
             &:after {
                 content: "";
                 position: absolute;
@@ -153,7 +158,7 @@ overflow: auto;
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
-                font-size: 30px;
+                font-size: 20px;
                 margin-bottom: 30px;
             }
         }
@@ -173,7 +178,7 @@ overflow: auto;
             li {
                 font-style: normal;
                 font-weight: 400;
-                font-size: rem(16);
+                font-size: rem(18);
                 line-height: 140%;
                 color: #555F76;
                 @media all and (max-width: 1280px) {
@@ -191,7 +196,7 @@ overflow: auto;
         .subtitle {
             font-style: normal;
             font-weight: 600;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
@@ -208,7 +213,7 @@ overflow: auto;
             margin: 0;
             font-style: normal;
             font-weight: 400;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #555F76;
             @media all and (max-width: 1280px) {

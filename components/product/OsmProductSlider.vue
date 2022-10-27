@@ -7,68 +7,99 @@
             @close="elementOpened = null"
         />
         <div class="productPage__slider" v-if="data">
-            <div class="glide productPage__slider-left">
-                <div class="glide__track" data-glide-el="track">
-                    <div class="glide__slides">
-                        <div class="glide__slide productPage__slider-item" v-if="data.PREVIEW_PICTURE" @click="elementOpened = 0">
-                            <div class="productPage__slider-item__in">
-                                <div class="productPage__slider-item__imege">
-                                    <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
-                                </div>
-                            </div>
+            <hooper :itemsToShow="1" ref="carousel" group="product_items" class="productPage__slider-left">
+                <slide class="productPage__slider-item" v-if="data.PREVIEW_PICTURE">
+                    <div class="productPage__slider-item__in" @click="elementOpened = 0">
+                        <div class="productPage__slider-item__imege">
+                            <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
                         </div>
-                        <div class="glide__slide productPage__slider-item" v-else>
-                            <div class="productPage__slider-item__in">
-                                <div class="productPage__slider-item__imege">
-                                    <img :src="require('~/assets/img/product.noimage.png')" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <template v-if="data.MORE_PHOTO">
-                            <div class="glide__slide productPage__slider-item" v-for="(item, key) in data.MORE_PHOTO.VALUE" :key="item.index" @click="elementOpened = key+1">
-                                <div class="productPage__slider-item__in">
-                                    <div class="productPage__slider-item__imege">
-                                        <img :src="$vareibles.remote + item.SRC" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
                     </div>
-                </div>
-                <div class="productPage__arrows" data-glide-el="controls" v-if="data.MORE_PHOTO">
-                    <button class="productPage__arrow productPage__arrow--left" data-glide-dir="<">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                            <rect width="40" height="40" fill="#FF004D"/>
-                            <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </button>
-                    <button class="productPage__arrow productPage__arrow--right" data-glide-dir=">">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                            <rect width="40" height="40" fill="#FF004D"/>
-                            <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+                </slide>
+                <slide class="productPage__slider-item" v-if="data.PREVIEW_PICTURE">
+                    <div class="productPage__slider-item__in" @click="elementOpened = 0">
+                        <div class="productPage__slider-item__imege">
+                            <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                        </div>
+                    </div>
+                </slide>
+                <slide class="productPage__slider-item" v-if="data.PREVIEW_PICTURE">
+                    <div class="productPage__slider-item__in" @click="elementOpened = 0">
+                        <div class="productPage__slider-item__imege">
+                            <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                        </div>
+                    </div>
+                </slide>
+                <slide class="productPage__slider-item" v-if="data.PREVIEW_PICTURE">
+                    <div class="productPage__slider-item__in" @click="elementOpened = 0">
+                        <div class="productPage__slider-item__imege">
+                            <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                        </div>
+                    </div>
+                </slide>
+                <slide class="productPage__slider-item" v-if="data.PREVIEW_PICTURE">
+                    <div class="productPage__slider-item__in" @click="elementOpened = 0">
+                        <div class="productPage__slider-item__imege">
+                            <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                        </div>
+                    </div>
+                </slide>
+                <slide class="productPage__slider-item" v-if="data.PREVIEW_PICTURE">
+                    <div class="productPage__slider-item__in" @click="elementOpened = 0">
+                        <div class="productPage__slider-item__imege">
+                            <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                        </div>
+                    </div>
+                </slide>
+            </hooper>
             <div class="productPage__slider-right">
-                <div class="productPage__slider-previews">
-                    <div class="productPage__slider-preview" v-if="data.PREVIEW_PICTURE" @click="slider.go(`=0`)">
+                    <hooper :settings="hooperSettings" group="product_items" class="productPage__slider-previews">
+                        <slide class="productPage__slider-preview" v-if="data.PREVIEW_PICTURE">
+                            <span @click="slideTo(0)">
+                                <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                            </span>
+                        </slide>
+                        <slide class="productPage__slider-preview" v-if="data.PREVIEW_PICTURE">
+                            <span @click="slideTo(1)">
+                                <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                            </span>
+                        </slide>
+                        <slide class="productPage__slider-preview" v-if="data.PREVIEW_PICTURE">
+                            <span @click="slideTo(2)">
+                                <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                            </span>
+                        </slide>
+                        <slide class="productPage__slider-preview" v-if="data.PREVIEW_PICTURE">
+                            <span @click="slideTo(3)">
+                                <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                            </span>
+                        </slide>
+                        <slide class="productPage__slider-preview" v-if="data.PREVIEW_PICTURE">
+                            <span @click="slideTo(4)">
+                                <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                            </span>
+                        </slide>
+                        <slide class="productPage__slider-preview" v-if="data.PREVIEW_PICTURE">
+                            <span @click="slideTo(5)">
+                                <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                            </span>
+                        </slide>
+                    </hooper>
+                    <!-- <div class="productPage__slider-preview" @click="slideTo(0)" v-if="data.PREVIEW_PICTURE" @click="slider.go(`=0`)">
                         <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
-                    </div>
-                    <template v-if="data.MORE_PHOTO">
-                        <div class="productPage__slider-preview" v-for="(item, key) in data.MORE_PHOTO.VALUE" :key="item.index" @click="slider.go(`=${key+1}`)">
+                    </div> -->
+                    <!-- <template v-if="data.MORE_PHOTO">
+                        <div class="productPage__slider-preview" @click="slideTo(0)" v-for="(item, key) in data.MORE_PHOTO.VALUE" :key="item.index" @click="slider.go(`=${key+1}`)">
                             <img :src="$vareibles.remote + item.SRC" alt="">
                         </div>
-                    </template>
-                </div>
+                    </template> -->
                 <div class="productPage__slider-buttons">
-                    <div class="productPage__slider-button productPage__slider-button--more" v-if="data.MORE_PHOTO.length > 9">
+                    <!-- <div class="productPage__slider-button productPage__slider-button--more" v-if="'MORE_PHOTO' in data"> -->
+                    <div class="productPage__slider-button productPage__slider-button--more" v-if="false">
                         <div class="text">
                             Еще 10
                         </div>
                     </div>
-                    <div class="productPage__slider-button productPage__slider-button--3d" @click="treeDView.isOpened = true">
+                    <div class="productPage__slider-button productPage__slider-button--3d" @click="treeDView.isOpened = true" v-if="false">
                         <div class="icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 23 29" fill="none">
                                 <path d="M13.0465 28.309L13.0726 28.7236C13.0787 28.82 13.1318 28.9074 13.2147 28.9571C13.2611 28.9848 13.3135 28.999 13.3659 28.999C13.4074 28.999 13.4488 28.9902 13.4876 28.9726L15.5988 28.012C15.714 27.9596 15.7828 27.8393 15.7694 27.7135C15.7561 27.5877 15.6637 27.4846 15.5401 27.4574L13.3379 26.9744C13.2479 26.9553 13.1537 26.9783 13.0836 27.0385C13.0136 27.0985 12.9759 27.188 12.9817 27.28L13.0095 27.7224C12.4352 27.7667 11.8524 27.7898 11.2649 27.7898C8.82379 27.7898 6.52254 27.4122 4.61004 26.6979C4.27697 26.5734 3.95678 26.4386 3.65819 26.2971C3.511 26.2273 3.33627 26.2901 3.26669 26.4367C3.19712 26.5834 3.25973 26.7587 3.40633 26.8281C3.71995 26.9768 4.05577 27.1183 4.4043 27.2484C6.38206 27.9871 8.75436 28.3775 11.2649 28.3775C11.8646 28.3775 12.4598 28.3542 13.0465 28.309Z" fill="#172242"/>
@@ -95,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal" v-show="treeDView.isOpened" @click="treeDView.isOpened = false">
+        <div class="modal" v-if="treeDView.isOpened" @click="treeDView.isOpened = false">
             <div class="modal__in" @click.stop>
                 <iframe width="100%" height="500" allowfullscreen src="https://www.blend4web.com/apps/webplayer/webplayer.html?load=/assets/tutorials/web_page_integration/apple.json"></iframe>
             </div>
@@ -104,7 +135,9 @@
 </template>
 
 <script>
-import Glide from '@glidejs/glide'
+// import Glide from '@glidejs/glide';
+import { Hooper, Slide } from 'hooper';
+import 'hooper/dist/hooper.css';
 export default {
     props: {
         data: {
@@ -112,13 +145,17 @@ export default {
             default: null
         },
     },
+    components: {
+        Hooper,
+        Slide
+    },
     computed: {
         popupPhotos() {
             const mainPicture = {
                 url: this.$vareibles.remote + this.data.PREVIEW_PICTURE,
                 title: ''
             };
-            if (this.data.MORE_PHOTO) {
+            if ('MORE_PHOTO' in this.data) {
                 const morePhoto = this.$vareibles.remote + this.data.MORE_PHOTO.VALUE.map(item => {
                     return {
                         url: item.SRC,
@@ -138,24 +175,45 @@ export default {
         }
     },
     data: () => ({
-        slider: new Glide('.productPage__slider-left', {
-            perView: 1,
-            gap: 0
-        }),
+        // slider: new Glide('.productPage__slider-left', {
+        //     perView: 1,
+        //     gap: 0
+        // }),
         treeDView: {
             isOpened: false,
         },
         elementOpened: null,
-        isMounted: false
+        isMounted: false,
+        hooperSettings: {
+            itemsToShow: 3,
+            centerMode: true,
+            vertical: false,
+            breakpoints: {
+                1281: {
+                    vertical: true
+                },
+            }
+        }
     }),
     mounted() {
         this.isMounted = true;
         setTimeout(() => {
-            this.slider.mount();
+            this.slideTo(1);
         }, 500)
+    },
+    methods: {
+        slideTo(index) {
+            this.$refs.carousel.slideTo(index);
+        }
     }
 }
 </script>
+
+<style lang="scss">
+.hooper-track {
+    padding: 0 !important;
+}
+</style>
 
 <style lang="scss" scoped>
 .modal {
@@ -242,6 +300,7 @@ export default {
     }
     &__slider-left {
         width: rem(828);
+        height: auto;
         @media all and (max-width: 1440px) {
             width: 710px;
         }
@@ -250,15 +309,38 @@ export default {
             margin-left: -20px;
             margin-right: -20px;
         }
+        @media print {
+            width: 400px;
+            .productPage__slider-item__in,
+            .productPage__slider-item__imege,
+            img {
+              position: static !important;
+              padding: 0 !important;
+              margin: 0 !important;
+              display: block !important;
+              width: auto !important;
+              height: auto !important;
+              transform: translate(0px, 0px) !important;
+            }
+            img {
+              width: 100% !important;
+            }
+            &::v-deep .hooper-track {
+              transform: translate(0px, 0px) !important;
+            }
+        }
     }
     &__slider-item {
         background: #D7DCE1;
+        @media print {
+            width: 400px !important;
+        }
     }
     &__slider-item__in {
         position: relative;
-        padding-top: 75%;
+        padding-top: 50%;
         @media all and (max-width: 1280px) {
-            padding-top: 56%;
+            padding-top: 45%;
             width: 100%;
         }
         @media all and (max-width: 840px) {
@@ -268,10 +350,10 @@ export default {
     }
     &__slider-item__imege {
         position: absolute;
-        top: rem(120);
-        left: rem(120);
-        right: rem(120);
-        bottom: rem(120);
+        top: rem(50);
+        left: rem(50);
+        right: rem(50);
+        bottom: rem(50);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -290,8 +372,10 @@ export default {
         display: flex;
         flex-direction: column;
         margin-left: rem(24);
+        @media print {
+            display: none;
+        }
         @media all and (max-width: 1440px) {
-            width: 77px;
             margin-left: 20px;
         }
         @media all and (max-width: 1280px) {
@@ -304,9 +388,13 @@ export default {
     }
     &__slider-previews {
         cursor: pointer;
+        height: calc(#{rem(98)} * 3);
+        overflow: hidden;
         @media all and (max-width: 1280px) {
             display: flex;
             align-items: center;
+            height: rem(98);
+            width: calc(#{rem(98)} * 3);
         }
         img{
             max-width: 100%;
@@ -316,24 +404,17 @@ export default {
         font-size: 0;
         border: 1px solid transparent;
         transition: all .3s ease;
-        &:not(:last-child) {
-            margin-bottom: rem(20);
-            @media all and (max-width: 1280px) {
-                margin-bottom: 0;
-                margin-right: 40px;
-            }
-        }
-        &:hover {
+        width: rem(98) !important;
+        height: rem(98) !important;
+        &:hover,
+        &.is-current {
             border-color: #D7DCE1;
         }
-        @media all and (max-width: 1280px) {
-            width: 73px;
-        }
-        @media all and (max-width: 840px) {
-            width: 60px;
-            &:nth-child(n+3) {
-                display: none;
-            }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 50%;
         }
     }
     &__slider-buttons {

@@ -6,7 +6,7 @@
                     <osm-breadcrumbs />
                 </div>
                 <div class="section__middle--tech">
-                    <osm-h1 class="section__title">Технология производства</osm-h1>
+                    <osm-h1 class="section__title">Технологии производства</osm-h1>
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
@@ -16,13 +16,20 @@
                         <div class="index">04</div>
                         <div class="texts">
                             <div class="title">Сборочно-сварочный этап</div>
-                            
                             <p class="text">
-                                Сварочный участок оснащён сварочными полуаппаратами ESAB EWM, аппаратами для ручной аргонодуговой сварки ESAB. Сварщики предприятия «Винета» имеют 5–6 разряды, обучены на полуавтоматическую и ручную аргонодуговую сварку, аттестованы под сварку изделий поднадзорных РМРС и сварку оборудования и трубопроводов атомных энергетических установок (Одобрение № 1310/с-2013). В наличии также имеется лазерная установка ALFA-3000A.
+                                На предприятии осуществляется сварка изделий из углеродистых и высоколегированных (коррозионностойких) сталей, а также алюминиевых сплавов, сплавов на основе меди и титановых сплавов. Сварка производится отечественными сварочными материалами.
                             </p>
-                            <div class="bg_text">
-                                Сварка производится импортными и отечественными материалами.
+                            <div class="text">
+                                Сварочный участок оснащен сварочным оборудованием для полуавтоматической и ручной аргонодуговой сварки, а также установками лазерной сварки, комплексами орбитальной сварки и установкой автоматической аргонодуговой сварки.
                             </div>
+                            <div class="text">
+                                Отработаны, аттестованы, внедрены и успешно применяются на практике следующие прогрессивные технологии:
+                            </div>
+                            <ul class="list">
+                              <li>автоматическая дуговая сварка неплавящимся электродом в среде защитного газа титановых сплавов (сварка в узкощелевую разделку).</li>
+                              <li>автоматическая дуговая орбитальная сварка неплавящимся электродом в среде защитного газа титановых сплавов (вварка труб в трубную решетку).</li>
+                            </ul>
+                            <div class="text">Сварка выполняется высококвалифицированными сварщиками, обученными и аттестованными на выполнение ручной, полуавтоматической и автоматической аргонодуговой сварки, имеющими свидетельства о допуске к сварке изделий поднадзорных ВП МО РФ, РМРС, РРР, а также оборудования и трубопроводов атомных энергетических установок.</div>
                         </div>
                     </div>
                 </div>
@@ -50,6 +57,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
+        @media all and (max-width: 1480px) {
+            padding: rem(30) rem(50) rem(40) rem(107);
+        }
         @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }
@@ -121,6 +131,11 @@ height: 100%;
             @media all and (max-width: 1280px) {
                 top: -65px;
             }
+            @media all and (max-width: 860px) {
+                font-size: 190px;
+top: -50px;
+right: 10px;
+            }
             &:after {
                 content: "";
                 position: absolute;
@@ -145,7 +160,7 @@ overflow: auto;
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
-                font-size: 30px;
+                font-size: 20px;
                 margin-bottom: 30px;
             }
         }
@@ -165,7 +180,7 @@ overflow: auto;
             li {
                 font-style: normal;
                 font-weight: 400;
-                font-size: rem(16);
+                font-size: rem(18);
                 line-height: 140%;
                 color: #555F76;
                 @media all and (max-width: 1280px) {
@@ -183,7 +198,7 @@ overflow: auto;
         .subtitle {
             font-style: normal;
             font-weight: 600;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
@@ -200,7 +215,7 @@ overflow: auto;
             margin: 0;
             font-style: normal;
             font-weight: 400;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #555F76;
             @media all and (max-width: 1280px) {

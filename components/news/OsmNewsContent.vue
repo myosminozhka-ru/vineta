@@ -1,6 +1,6 @@
 <template>
     <div class="news__content_in">
-        <nuxt-link :to="{name: 'news-newsId', params: {newsId: 'test'}}" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+        <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: 'test'}})" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
             <template v-if="key === 0">
                 <div class="news__image">
                     <img :src="item.image" width="100%" alt="">
@@ -12,7 +12,7 @@
                     <div class="news__text">
                         {{ item.text }}
                     </div>
-                    <osm-button :link="item.link">Подробнее</osm-button>
+                    <osm-button :link="item.link">{{ $t('buttons.more') }}</osm-button>
                 </div>
             </template>
             <template v-else>
@@ -79,7 +79,7 @@ export default {
         grid-template-areas: 
             'big big big'
             'first second third';
-        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
             grid-template-columns: repeat(2, 1fr );
             grid-template-areas: 
                 'big big'

@@ -1,7 +1,6 @@
 <template>
     <div class="news__content_in">
-        <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
-        <!-- <pre style="font-size: 15rem">{{ item }}</pre> -->
+        <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
             <template v-if="key === 0">
                 <div class="news__image">
                     <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -14,7 +13,7 @@
                     <div class="news__text">
                         {{ item.NAME }}
                     </div>
-                    <osm-button :link="item.link">Подробнее</osm-button>
+                    <osm-button :link="item.link">{{ $t('buttons.more') }}</osm-button>
                 </div>
             </template>
             <template v-else>
@@ -35,16 +34,16 @@
                 </div>
             </template>
         </nuxt-link>
-        <div class="filter__title" :class="{'isActive': tabs.selected === 1}" @click="tabs.selected = 1">
-            Новости
+        <div class="filter__title hide_off_mobile" :class="{'isActive': tabs.selected === 1}" @click="tabs.selected = 1">
+            {{ $t('buttons.news') }}
             <div class="arrow hide_on_desktop">
                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
                     <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
                 </svg>
             </div>
         </div>
-        <div class="news__content_tabs" v-if="tabs.selected === 1">
-            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+        <div class="news__content_tabs hide_off_mobile" v-if="tabs.selected === 1">
+            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
                         <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -62,7 +61,7 @@
                 </div>
             </nuxt-link>
         </div>
-        <div class="filter__title" :class="{'isActive': tabs.selected === 2}" @click="tabs.selected = 2">
+        <div class="filter__title hide_off_mobile" :class="{'isActive': tabs.selected === 2}" @click="tabs.selected = 2">
             Пресс-релизы
             <div class="arrow hide_on_desktop">
                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -70,8 +69,8 @@
                 </svg>
             </div>
         </div>
-        <div class="news__content_tabs" v-if="tabs.selected === 2">
-            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+        <div class="news__content_tabs hide_off_mobile" v-if="tabs.selected === 2">
+            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
                         <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -89,7 +88,7 @@
                 </div>
             </nuxt-link>
         </div>
-        <div class="filter__title" :class="{'isActive': tabs.selected === 3}" @click="tabs.selected = 3">
+        <div class="filter__title hide_off_mobile" :class="{'isActive': tabs.selected === 3}" @click="tabs.selected = 3">
             Статьи
             <div class="arrow hide_on_desktop">
                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -97,8 +96,8 @@
                 </svg>
             </div>
         </div>
-        <div class="news__content_tabs" v-if="tabs.selected === 3">
-            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+        <div class="news__content_tabs hide_off_mobile" v-if="tabs.selected === 3">
+            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
                         <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -132,7 +131,7 @@ export default {
         ...mapGetters(['getNews']),
         ...mapGetters(['getSelectedNewsType']),
         news() {
-            return this.getNews.filter(item => item.PROPERIES[1].VALUE === this.getSelectedNewsType)
+            return this.getNews.filter(item => 'PROPERIES' in item && item.PROPERIES[1].VALUE.replace(/\s/g, '').toLowerCase().includes(this.getSelectedNewsType.replace(/\s/g, '').toLowerCase()));
         }
     }
 }
@@ -174,7 +173,7 @@ export default {
         grid-template-areas: 
             'big big big'
             'first second third';
-        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
             grid-template-columns: repeat(2, 1fr );
             grid-template-areas: 
                 'big big'
@@ -273,21 +272,49 @@ export default {
                 margin-bottom: 20px;
             }
         }
+        &:hover {
+            .news__item_right {
+                border-color: #FF0040;
+            }
+            .news__link {
+                color: #DF0043;
+                border-color: #DF0043;
+            }
+        }
+        &:active {
+            .news__link {
+                color: #A70032;
+                border-color: #A70032;
+            }
+        }
     }
     &__item &__item_left {
-        // height: rem(185);
-        margin-bottom: rem(20);
+        // height: rem(345);
+        position: relative;
+        padding-top: 50%;
+        img {
+            position: absolute;
+            top: 0;
+        }
     }
     &__item &__image {
         width: 100%;
         height: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
     &__item &__item_right {
         flex: 1 1 auto;
         padding: rem(20);
+        padding-top: rem(40);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        border: 1px solid #D7DCE1;
+        transition: all .3s ease-out;
     }
     &__item &__item_top {
         margin-bottom: rem(42);
@@ -310,6 +337,13 @@ export default {
         font-size: rem(20);
         line-height: 140%;
         color: #172242;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -ms-line-clamp: 3;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
     }
     &__item &__link {
         align-self: start;

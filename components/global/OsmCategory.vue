@@ -1,10 +1,10 @@
 <template>
-    <nuxt-link :to="{name: 'index'}" class="category">
+    <a href="https://vinetaboat.ru/" target="_blank" class="category">
         <div class="category__background">
             <img :src="require('~/assets/img/cat.jpg')" alt="">
         </div>
-        <div class="category__name">Лодки и катера</div>
-    </nuxt-link>
+        <div class="category__name">{{$t('buttons.boats')}}</div>
+    </a>
 </template>
 
 <style lang="scss" scoped>
