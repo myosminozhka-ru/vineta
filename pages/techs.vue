@@ -91,37 +91,43 @@ export default {
     ])
   },
   mounted() {
-    setTimeout(() => {
-      this.sections = document.querySelectorAll('.section')
-      if (window.innerWidth <= 1024) {
-        this.activeIndex = -1
-        this.scollTo()
-      }
-      if (window.innerWidth > 1024) {
-        this.activeIndex = 0
-        this.sections.forEach((item) => {
-          if (item.querySelector('.section__top--tech') && item.querySelector('.section__middle--tech')) {
-            const top = item.querySelector('.section__top--tech').clientHeight
-            const middle = item.querySelector('.section__middle--tech').clientHeight
-            // console.log(top, middle, 'asdasdasd');
-            item.querySelector('.section__bottom--tech').style.height = `calc(100% - ${top}px - ${middle}px)`
-          }
-        })
-        document.addEventListener('mousewheel', (event) => {
-          if (event.wheelDelta > 0 || event.detail < 0) {
-            this.change('up')
-            this.isInProgress = true
-          } else {
-            this.change('down')
-            this.isInProgress = true
-          }
-        })
+    if (window.innerWidth <= 1024) {
+      this.activeIndex = -1
+      this.scollTo()
+    }
 
-        if (this.$route.hash === '#second') {
-          this.activeIndex = 1
+    if (window.innerWidth > 1024) {
+      const stateCheck = setInterval(() => {
+        if (document.readyState === 'complete') {
+          clearInterval(stateCheck)
+          setTimeout(() => {
+            this.activeIndex = 0
+            this.sections = document.querySelectorAll('.section')
+            this.activeIndex = 0
+            this.sections.forEach((item) => {
+              if (item.querySelector('.section__top--tech') && item.querySelector('.section__middle--tech')) {
+                const top = item.querySelector('.section__top--tech').clientHeight
+                const middle = item.querySelector('.section__middle--tech').clientHeight
+                item.querySelector('.section__bottom--tech').style.height = `calc(100% - ${top}px - ${middle}px)`
+              }
+            })
+            document.addEventListener('mousewheel', (event) => {
+              if (event.wheelDelta > 0 || event.detail < 0) {
+                this.change('up')
+                this.isInProgress = true
+              } else {
+                this.change('down')
+                this.isInProgress = true
+              }
+            })
+
+            if (this.$route.hash === '#second') {
+              this.activeIndex = 1
+            }
+          }, 100)
         }
-      }
-    }, 1000)
+      }, 1000)
+    }
   },
   methods: {
     ...mapActions(['addBreadcrumbs']),
