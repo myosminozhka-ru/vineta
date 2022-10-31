@@ -6,7 +6,7 @@
                     <osm-breadcrumbs />
                 </div>
                 <div class="section__middle--tech">
-                    <osm-h1 class="section__title">Технология производства</osm-h1>
+                    <osm-h1 class="section__title">Технологии производства</osm-h1>
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
@@ -17,17 +17,10 @@
                         <div class="texts">
                             <div class="title">Отгрузка</div>
                             <p class="text">
-                                Транспортировка деталей, заготовок и готовой продукции производится подъемным оборудованием г/п до 10 тонн.
-                            </p>
-                            <div class="line"></div>
-                            <p class="text">
-                                Наше предприятие тесно сотрудничает с проектантами кораблей, судов и плавучих средств: ОАО «Северное ПКБ», ОАО «Зеленодольское ПКБ», ОАО «ЦКБМТ «Рубин», ОАО «Невское ПКБ», ОАО СПМБМ «Малахит», ОАО «ЦКБ «Айсберг», ОАО «ЦМКБ «Алмаз», ОАО «КБ «Вымпел». Данные проектные организации успешно применяют наши разработки и продукцию в своих проектах.
-                            </p>
-                            <p class="text">
-                                Мы продолжаем совершенствовать свое производство. ООО "Винета" имеет свое собственное конструкторское бюро. Персонал проходит обучение, курсы повышения квалификации, периодическую аттестацию в области РМРС, РРР, АЭС. Наш станочный парк пополнятся новым оборудованием и станками. Это позволяет существенно увеличить мощность производства и сократить сроки изготовления оборудования, продолжая обеспечивать высокий стандарт качества продукции, выпускаемой под маркой ООО «Винета».
-                            </p>
-                            <p class="text">
-                                Накопленный опыт в решении многогранных проектно-технологических проблем дает полное основание утверждать, что ООО "Винета", обладая собственным современным производством и высококвалифицированными специалистами, имеет все возможности решать проблемы своих заказчиков и партнеров.
+                            Транспортировка деталей, заготовок и готовой продукции
+                            производится подъемным оборудованием, г/п до 10 тонн.<br>
+                            Упаковка изделий и оформление сопроводительной документации
+                            выполняется в соответствии с действующими стандартами.
                             </p>
                         </div>
                     </div>
@@ -56,6 +49,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
+        @media all and (max-width: 1480px) {
+            padding: rem(30) rem(50) rem(40) rem(107);
+        }
         @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }
@@ -127,6 +123,11 @@ height: 100%;
             @media all and (max-width: 1280px) {
                 top: -65px;
             }
+            @media all and (max-width: 860px) {
+                font-size: 190px;
+top: -50px;
+right: 10px;
+            }
             &:after {
                 content: "";
                 position: absolute;
@@ -151,7 +152,7 @@ overflow: auto;
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
-                font-size: 30px;
+                font-size: 20px;
                 margin-bottom: 30px;
             }
         }
@@ -171,7 +172,7 @@ overflow: auto;
             li {
                 font-style: normal;
                 font-weight: 400;
-                font-size: rem(16);
+                font-size: rem(18);
                 line-height: 140%;
                 color: #555F76;
                 @media all and (max-width: 1280px) {
@@ -189,7 +190,7 @@ overflow: auto;
         .subtitle {
             font-style: normal;
             font-weight: 600;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
@@ -206,7 +207,7 @@ overflow: auto;
             margin: 0;
             font-style: normal;
             font-weight: 400;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #555F76;
             @media all and (max-width: 1280px) {

@@ -6,7 +6,7 @@
                     <osm-breadcrumbs />
                 </div>
                 <div class="section__middle--tech">
-                    <osm-h1 class="section__title">Технология производства</osm-h1>
+                    <osm-h1 class="section__title">Технологии производства</osm-h1>
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
@@ -15,13 +15,16 @@
                     <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">03</div>
                         <div class="texts">
-                            <div class="title">Этап механической обработки 2</div>
-                            
-                            <p class="text">
-                                Токарно-винторезный станок с цифровой индикацией Knuth Compass 200/1000 B позволяет обрабатывать как внутренние, так и наружные поверхности. В частности, оборудование позволяет обтачивать детали различных форм (конических, фасонных, цилиндрических), выполнять растачивание, сверление и развертывание отверстий, накатку рифлений, подрезку торцов, нарезание резьбы и т. д.
+                            <div class="title">Этап механической обработки</div>  
+                            <p class="subtitle">
+                                Предприятие располагает большим станочным парком современного оборудования для выполнения различных операций:
                             </p>
-                            <div class="bg_text">
-                                Широкий спектр выполняемых задач, высокая производительность, высочайшая точность обработки деталей и надежность
+                            <div class="text">
+                                Токарная обработка деталей токарно-винторезными станками;
+                                Фрезерная обработка на вертикально-фрезерных обрабатывающих центрах;
+                                Станки сверлильной группы (вертикально-сверлильные, радиально-сверлильные);
+                                Расточная обработка крупногабаритных деталей производится на горизонтально-расточных станках;
+                                Современный станочных парк позволяет выполнять широкий спектр задач любой сложности, обеспечивать высокую производительность и точность обработки деталей, а также надежность и безопасность эксплуатации
                             </div>
                         </div>
                     </div>
@@ -50,6 +53,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
+        @media all and (max-width: 1480px) {
+            padding: rem(30) rem(50) rem(40) rem(107);
+        }
         @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }
@@ -121,6 +127,11 @@ height: 100%;
             @media all and (max-width: 1280px) {
                 top: -65px;
             }
+            @media all and (max-width: 860px) {
+                font-size: 190px;
+top: -50px;
+right: 10px;
+            }
             &:after {
                 content: "";
                 position: absolute;
@@ -145,7 +156,7 @@ overflow: auto;
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
-                font-size: 30px;
+                font-size: 20px;
                 margin-bottom: 30px;
             }
         }
@@ -165,7 +176,7 @@ overflow: auto;
             li {
                 font-style: normal;
                 font-weight: 400;
-                font-size: rem(16);
+                font-size: rem(18);
                 line-height: 140%;
                 color: #555F76;
                 @media all and (max-width: 1280px) {
@@ -183,7 +194,7 @@ overflow: auto;
         .subtitle {
             font-style: normal;
             font-weight: 600;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
@@ -200,7 +211,7 @@ overflow: auto;
             margin: 0;
             font-style: normal;
             font-weight: 400;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #555F76;
             @media all and (max-width: 1280px) {

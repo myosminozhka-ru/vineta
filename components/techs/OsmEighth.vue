@@ -8,8 +8,47 @@
                 <div class="section__customers--tech">
                     <div class="title">Заказчики</div>
                     <div class="items">
-                        <div class="item" v-for="item in 20" :key="item.index">
-                            <img :src="require('~/assets/img/techs/alfeus_logo.svg')" alt="">
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_1_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_2_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_3_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_4_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_5_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_6_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_7_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_8_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_9_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_10_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_11_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_12_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_13_f.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img :src="require('~/assets/img/techs/tech_14_f.png')" alt="">
                         </div>
                     </div>
                 </div>
@@ -37,6 +76,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
+        @media all and (max-width: 1480px) {
+            padding: rem(30) rem(50) rem(40) rem(107);
+        }
         @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }
@@ -74,6 +116,11 @@ export default {
             box-sizing: border-box;
             font-size: 0;
             background: #F2F2F2;
+            min-height: 114px;
+            max-height: 114px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             &:not(:nth-child(6n+6)) {
                 margin-right: calc(#{rem(20)} * 5 / 6);
             }
@@ -81,11 +128,16 @@ export default {
                 margin-top: rem(20);
             }
             img {
-                width: 100%;
+                max-width: 100%;
             }
-            @media all and (max-width: 1280px) {
+            @media all and (max-width: 1440px) {
                 width: calc(100% / 4 - 20px * 3 / 4);
                 padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 94px;
+                max-height: 94px;
                 &:not(:nth-child(6n+6)) {
                     margin-right: 0;
                 }

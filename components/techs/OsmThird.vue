@@ -6,28 +6,30 @@
                     <osm-breadcrumbs />
                 </div>
                 <div class="section__middle--tech">
-                    <osm-h1 class="section__title">Технология производства</osm-h1>
+                    <osm-h1 class="section__title">Технологии производства</osm-h1>
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
                         <img :src="require('~/assets/img/techs/3.jpg')" alt="">
                     </div>
                     <div class="section__right--tech" @mousewheel.stop>
-                        <div class="index">03</div>
+                        <div class="index">02</div>
                         <div class="texts">
-                            <div class="title">Этап механической обработки</div>
-                            <div class="subtitle">Предприятие располагает большим станочным парком для выполнения различных операций:</div>
+                            <div class="title">Заготовительный этап</div>
+                            <div class="subtitle">На данном этапе происходит вырезка/вырубка заготовок для последующей обработки.
+                            Заготовительный участок оснащен следующим оборудованием:</div>
                             <ul class="list">
-                                <li>токарная обработка деталей макс. Ø1600 мм, L=3000 мм, макс. весом до 2,5 т</li>
-                                <li>токарная обработка деталей макс. Ø1600 мм, L=3000 мм, макс. весом до 2,5 т</li>
-                                <li>токарная обработка деталей макс. Ø1600 мм, L=3000 мм, макс. весом до 2,5 т</li>
-                                <li>токарная обработка деталей макс. Ø1600 мм, L=3000 мм, макс. весом до 2,5 т</li>
-                                <li>токарная обработка деталей макс. Ø1600 мм, L=3000 мм, макс. весом до 2,5 т</li>
-                                <li>токарная обработка деталей макс. Ø1600 мм, L=3000 мм, макс. весом до 2,5 т</li>
+                                <li>Установки воздушно-плазменной и гидроабразивной резки;</li>
+                                <li>Вальцы листогибочные 3-х и 4-х валковые;</li>
+                                <li>Оборудование, позволяющее выполнять штамповку эллиптических и сферических донышек;</li>
+                                <li>Ленточнопильные станки для резки сортового, фасонного и других видов проката;</li>
+                                <li>Ножницы листовые гильотинные для рубки заготовок;</li>
+                                <li>Трубогибочные станки для гибки труб;</li>>
+                                <li>Машина листогибочная для гибки листа;</li>
+                                <li>Прессы гидравлические для штамповки.</li>
                             </ul>
-                            <div class="subtitle">Вертикальные обрабатывающие центры с ЧПУ Challenger VMC1600F и Challenger 1000 предназначены для высокопроизводительной обработки крупногабаритных деталей и контурного фрезерования деталей сложной формы, сверления трубных решеток с точностью 0,025 мм.</div>
-                            <div class="bg_text">
-                                Комплексная обработка трехмерных сложных деталей
+                            <div class="text">
+                              Оснастка на имеющееся оборудование проектируется и изготовляется собственными силами, что гарантирует индивидуальный подход к решению поставленной задачи.
                             </div>
                         </div>
                     </div>
@@ -56,6 +58,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
+        @media all and (max-width: 1480px) {
+            padding: rem(30) rem(50) rem(40) rem(107);
+        }
         @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }
@@ -127,6 +132,11 @@ height: 100%;
             @media all and (max-width: 1280px) {
                 top: -65px;
             }
+            @media all and (max-width: 860px) {
+                font-size: 190px;
+top: -50px;
+right: 10px;
+            }
             &:after {
                 content: "";
                 position: absolute;
@@ -151,7 +161,7 @@ overflow: auto;
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
-                font-size: 30px;
+                font-size: 20px;
                 margin-bottom: 30px;
             }
         }
@@ -171,7 +181,7 @@ overflow: auto;
             li {
                 font-style: normal;
                 font-weight: 400;
-                font-size: rem(16);
+                font-size: rem(18);
                 line-height: 140%;
                 color: #555F76;
                 @media all and (max-width: 1280px) {
@@ -189,7 +199,7 @@ overflow: auto;
         .subtitle {
             font-style: normal;
             font-weight: 600;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
@@ -206,7 +216,7 @@ overflow: auto;
             margin: 0;
             font-style: normal;
             font-weight: 400;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #555F76;
             @media all and (max-width: 1280px) {

@@ -5,11 +5,11 @@
                 <div class="response__title">Откликнуться на вакансию</div>
                 <div class="response__line"></div>
                 <div class="response__contacts">
-                    <div class="name">Наталья</div>
+                    <div class="name">Марина Юрьевна</div>
                     <div class="phones">
-                        <a href="tel:+79817961419">+7 (981) 796-14-19</a>
+                        <a href="tel:88124935048">8 (812) 493-50-48</a>
                         <div class="delim"></div>
-                        <a href="tel:+79817961419">+7 (981) 796-14-19</a>
+                        <a href="tel:+79112217814">+7-911-221-78-14</a>
                     </div>
                     <div class="email">
                         <a href="mailto:hr02@vineta.ru">hr02@vineta.ru</a>
@@ -20,6 +20,7 @@
                 <osm-button>Откликнуться</osm-button>
             </div>
         </div>
+        <osm-apply-modal property='' />
     </div>
 </template>
 
@@ -27,12 +28,13 @@
 import { mapActions } from 'vuex';
 export default {
     components: {
+        OsmApplyModal: () => import('~/components/modals/apply.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue')
     },
     methods: {
         ...mapActions(['toggleModal']),
         openApplyModal() {
-            console.log('openApplyModal');
+            // console.log('openApplyModal');
             this.toggleModal({
                 isOpened: true,
                 type: 'apply'
@@ -125,7 +127,35 @@ export default {
                 margin: 10px 0;
             }
         }
-        .phones,
+        .phones {
+            a {
+                font-style: normal;
+                font-weight: 400;
+                font-size: rem(20);
+                line-height: rem(20);
+                color: #FFFFFF;
+                text-decoration: none;
+                position: relative;
+                transition: all .3s ease;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: rem(-5);
+                    left: 0;
+                    right: 0;
+                    height: 0;
+                    background: #fff;
+                    border-radius: 4px;
+                    transition: all .3s ease;
+                }
+                &:hover {
+                    color: #fff;
+                    &:after {
+                        height: 2px;
+                    }
+                }
+            }
+        }
         .email {
             a {
                 font-style: normal;

@@ -1,10 +1,11 @@
 <template>
-    <div class="customers glide">
+    <div class="customers glide" v-if="fivethData.filter(item => item.PREVIEW_PICTURE).length">
+    <!-- <pre>{{ fivethData.filter(item => item.PREVIEW_PICTURE) }}</pre> -->
         <client-only>
-            <osm-h2 class="customers__top">
-                <osm-h2 class="customers__title">Заказчики</osm-h2>
-                <osm-button class="customers__button" v-if="hasButton" link="partners">Подробнее</osm-button>
-            </osm-h2>
+            <div class="customers__top">
+                <osm-h2 class="customers__title">{{ $t('sections.fiveth.customers.title') }}</osm-h2>
+                <osm-button class="customers__button" v-if="hasButton" link="partners">{{ $t('buttons.more') }}</osm-button>
+            </div>
             <div class="customers__slider-in">
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
@@ -63,14 +64,18 @@ export default {
     mounted() {
         // console.log('beforeMount');
         setTimeout(() => {
+            if (!document.querySelector('.customers.glide')) return;
             this.slider = new Glide('.customers.glide', {
                 perView: 6,
                 type: 'carousel',
                 breakpoints: {
-                    1024: {
+                    1280: {
                         perView: 3
                     },
                     840: {
+                        perView: 2
+                    },
+                    600: {
                         perView: 1
                     }
                 }

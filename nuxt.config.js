@@ -3,7 +3,8 @@ export default {
   //   base: '/vineta/',
   // },
   server: {
-    host: '0', // default: localhost
+  host: '127.0.0.1', // default: localhost
+  port: '3000',
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -27,6 +28,9 @@ export default {
   plugins: [
     '~/plugins/tabs.js',
     '~/plugins/vars.js',
+    '~/plugins/i18n.js',
+    '~/plugins/axios.js',
+    '~/plugins/vue-3d-loader.js',
     // '~/plugins/vue-meta.js',
     { src: '~/plugins/print.js', ssr: false },
     { src: '~/plugins/lightgallery.js', ssr: false }
@@ -47,8 +51,31 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     '@openafg/nuxt-fullpage',
-    'nuxt-vuex-localstorage'
+    'nuxt-vuex-localstorage',
+    '@nuxtjs/i18n',
+    // 'nuxt-lazy-load'
   ],
+
+  i18n: {
+    locales: [
+      {
+        code: 'ru',
+        name: 'RU',
+        file: 'ru.json'
+      },
+      // {
+      //   code: 'en',
+      //   name: 'EN',
+      //   file: 'en.json'
+      // },
+    ],
+    defaultLocale: 'ru',
+    fallbackLocale: 'ru',
+    strategy: 'prefix',
+    detectBrowserLanguage: false,
+    // lazy: true,
+    langDir: 'locales'
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -62,6 +89,9 @@ export default {
       config.resolve.symlinks = false
     },
     extractCSS: true,
+    transpile: [
+      'three'
+    ],
   },
   components: true,
   styleResources: {

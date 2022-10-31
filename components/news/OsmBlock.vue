@@ -1,11 +1,11 @@
 <template>
     <div class="news__wrap" :class="{'innerPage': inner}">
         <div class="news__top">
-            <osm-h1 class="news__title">Новости</osm-h1>
-            <osm-button class="news__button_top" link="news" :outlined="true">Все новости</osm-button>
+            <osm-h1 class="news__title">{{ this.$t('buttons.news') }}</osm-h1>
+            <osm-button class="news__button_top" link="news" :outlined="true">{{ this.$t('buttons.all_news') }}</osm-button>
         </div>
         <div class="news__bottom hide_on_tablet">
-            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
                 <template v-if="key === 0">
                     <div class="news__image">
                         <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -18,7 +18,7 @@
                         <div class="news__text">
                             {{ item.NAME }}
                         </div>
-                        <span class="button" >Читать новость</span>
+                        <span class="button" >{{ $t('buttons.read_news') }}</span>
                     </div>
                 </template>
                 <template v-else>
@@ -30,13 +30,12 @@
                     </div>
                     <div class="news__item_right">
                         <div class="news__item_top">
-                            <!-- <pre>{{ item }}</pre> -->
-                            <div class="news__date" v-if="item.PROPERIES[0]">{{ item.PROPERIES[0].VALUE }}</div>
+                            <div class="news__date" v-if="'PROPERIES' in item">{{ item.PROPERIES[0].VALUE }}</div>
                             <div class="news__text">
                                 {{ item.NAME }}
                             </div>
                         </div>
-                        <span class="news__link" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</span>
+                        <span class="news__link" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">{{ $t('buttons.read_news') }}</span>
                     </div>
                 </template>
             </nuxt-link>
@@ -56,9 +55,9 @@
                             <div class="news__text">
                                 {{ item.NAME }}
                             </div>
-                            <osm-button :link="item.link" class="hide_on_mobile">Подробнее</osm-button>
+                            <osm-button :link="item.link" class="hide_on_mobile">{{ $t('buttons.more') }}</osm-button>
                             <div class="mobile_link hide_off_mobile">
-                                <nuxt-link class="more" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</nuxt-link>
+                                <nuxt-link class="more" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})">{{ $t('buttons.read_news') }}</nuxt-link>
                             </div>
                         </div>
                     </div>
@@ -68,7 +67,7 @@
                 <div class="news__bullets hide_on_mobile" data-glide-el="controls[nav]">
                     <button v-for="(item, key) in getNews.slice(0, 4)" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
                 </div>
-                <nuxt-link :to="{name: 'news'}" class="more hide_off_mobile">Смотреть все</nuxt-link>
+                <nuxt-link :to="localePath({name: 'news'})" class="more hide_off_mobile">Смотреть все</nuxt-link>
                 <div class="news__arrows" data-glide-el="controls">
                     <button class="news__arrow news__arrow--left" data-glide-dir="<">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
@@ -103,22 +102,27 @@ export default {
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
   data: () => ({
-    slider: new Glide('.news__slider', {
-        perView: 2,
-        gap: 20,
-        type: 'carousel',
-        breakpoints: {
-            840: {
-                perView: 1,
-            }
-        }
-    }),
+    slider: null,
   }),
   computed: {
     ...mapGetters(['getNews']),
   },
   mounted() {
-    this.slider.mount();
+    if (document.querySelector('.news__slider')) {
+        this.slider = new Glide('.news__slider', {
+            perView: 2,
+            gap: 20,
+            type: 'carousel',
+            breakpoints: {
+                1280: {
+                    perView: 2,
+                },
+                840: {
+                    perView: 1,
+                }
+            }
+        }).mount();
+    }
   }
 }
 </script>
@@ -256,7 +260,7 @@ export default {
                     color: #fff;
                 }
             }
-            @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+            @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
                 padding-top: 81px;
             }
         }
@@ -338,6 +342,9 @@ export default {
         position: relative;
         z-index: 2;
         margin-bottom: rem(70);
+        @media all and (max-width: 840px) {
+            margin-bottom: 0 !important;
+        }
     }
     &__item_big &__item_bottom {
         position: relative;
@@ -367,9 +374,6 @@ export default {
             white-space: normal;
             font-size: 20px;
         }
-        @media all and (max-width: 1280px) {
-            font-size: 14px;
-        }
     }
     &__item {
         display: flex;
@@ -379,6 +383,9 @@ export default {
         width: rem(220);
         height: rem(185);
         margin-right: rem(20);
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+            height: rem(170);
+        }
     }
     &__item &__image {
         width: 100%;
@@ -398,6 +405,9 @@ export default {
     }
     &__item &__item_top {
         margin-bottom: rem(42);
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+            margin-bottom: rem(10);
+        }
     }
     &__item &__date {
         font-style: normal;
